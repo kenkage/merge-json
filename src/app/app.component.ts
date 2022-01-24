@@ -34,12 +34,14 @@ export class AppComponent implements OnInit {
         if (Object.keys(b).indexOf(key) > -1) {
           if (typeof a[key] === 'object') {
             b[key] = [...b[key], ...a[key]];
+            b[key] = Array.from(new Set([...b[key]]));
           } else {
             b[key].push(a[key]);
-          }
+          } 
         } else {
           if (typeof a[key] === 'object') {
             b[key] = [...a[key]];
+            b[key] = Array.from(new Set([...b[key]]));
           } else {
             b[key] = [a[key]];
           }
